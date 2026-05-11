@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kuromi Mandarin Garden</title>
+    <link rel="stylesheet" href="chinese-garden.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="hero-band" aria-labelledby="game-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Traditional Mandarin</p>
+          <h1 id="game-title">Kuromi &#23567;&#39764;&#22290;</h1>
+          <p class="subtitle">Unlock tiny purple charms by learning everyday phrases.</p>
+        </div>
+
+        <div class="garden-stage" aria-label="Purple charm garden progress">
+          <svg class="garden-art" viewBox="0 0 560 360" role="img" aria-labelledby="garden-title">
+            <title id="garden-title">A purple gothic-cute Mandarin study garden with a moon, mascot, and charms</title>
+            <defs>
+              <linearGradient id="skyGradient" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#2b1a4a" />
+                <stop offset="58%" stop-color="#7250ad" />
+                <stop offset="100%" stop-color="#f7d6ff" />
+              </linearGradient>
+              <linearGradient id="hillGradient" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#bd82ee" />
+                <stop offset="100%" stop-color="#5f327f" />
+              </linearGradient>
+              <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fff6b0" />
+                <stop offset="100%" stop-color="#ffabe4" />
+              </radialGradient>
+            </defs>
+            <rect width="560" height="360" fill="url(#skyGradient)" rx="26" />
+            <circle cx="458" cy="70" r="38" fill="url(#moonGlow)" />
+            <path d="M454 42 C433 58 437 93 464 106 C426 107 406 65 428 38 C437 29 448 28 454 42 Z" fill="#2b1a4a" opacity="0.55" />
+            <g fill="#ffd7f5" opacity="0.95">
+              <path d="M82 64 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2 Z" />
+              <path d="M188 92 l5 10 11 2 -8 7 2 11 -10 -5 -10 5 2 -11 -8 -7 11 -2 Z" />
+              <path d="M378 42 l5 10 11 2 -8 7 2 11 -10 -5 -10 5 2 -11 -8 -7 11 -2 Z" />
+            </g>
+            <path d="M0 238 C84 179 156 176 224 230 C302 146 408 158 560 224 L560 360 L0 360 Z" fill="#b58be0" />
+            <path d="M0 270 C104 206 214 220 290 275 C386 216 476 224 560 266 L560 360 L0 360 Z" fill="url(#hillGradient)" />
+            <path d="M64 268 C135 247 225 249 314 272 C397 293 483 292 560 267 L560 360 L0 360 L0 291 C18 284 40 276 64 268 Z" fill="#241834" />
+            <g class="mascot" aria-hidden="true">
+              <path d="M236 144 C205 88 198 54 217 39 C237 55 251 92 258 132 Z" fill="#21152f" />
+              <path d="M330 132 C339 91 355 55 376 39 C394 55 385 90 352 146 Z" fill="#21152f" />
+              <path d="M244 138 C260 112 338 112 356 139 C386 185 365 253 300 253 C236 253 214 185 244 138 Z" fill="#24182f" />
+              <ellipse cx="300" cy="182" rx="52" ry="45" fill="#fff2fb" />
+              <circle cx="278" cy="178" r="7" fill="#21152e" />
+              <circle cx="322" cy="178" r="7" fill="#21152e" />
+              <path d="M292 197 C297 202 304 202 309 197" fill="none" stroke="#21152e" stroke-width="4" stroke-linecap="round" />
+              <path d="M278 133 l15 11 18 -11 18 11 15 -11 -7 31 h-52 Z" fill="#f38ccf" />
+              <circle cx="300" cy="144" r="10" fill="#fff2fb" />
+              <path d="M286 226 C263 251 245 269 222 280" fill="none" stroke="#fff2fb" stroke-width="14" stroke-linecap="round" />
+              <path d="M314 226 C337 251 355 269 378 280" fill="none" stroke="#fff2fb" stroke-width="14" stroke-linecap="round" />
+              <path d="M238 282 C278 267 321 267 362 282" fill="none" stroke="#f38ccf" stroke-width="9" stroke-linecap="round" />
+            </g>
+            <g id="garden-plants"></g>
+          </svg>
+        </div>
+      </section>
+
+      <section class="stats-strip" aria-label="Progress">
+        <div><span>Level</span><strong id="level-value">1</strong></div>
+        <div><span>Charms</span><strong id="leaf-value">0</strong></div>
+        <div><span>Mastered</span><strong id="mastered-value">0</strong></div>
+      </section>
+
+      <section class="game-board" aria-label="Learning game">
+        <aside class="phrase-deck">
+          <div class="deck-head">
+            <h2>Daily Spell</h2>
+            <button class="icon-button" id="speak-current" type="button" aria-label="Play pronunciation">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 9v6h4l5 4V5L8 9H4Z" />
+                <path d="M16 8.5a5 5 0 0 1 0 7" />
+                <path d="M18.5 6a8.5 8.5 0 0 1 0 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="phrase-card">
+            <p class="hanzi" id="current-hanzi">&#26089;&#23433;</p>
+            <p class="pinyin" id="current-pinyin">z&#462;o &#257;n</p>
+            <p class="meaning" id="current-meaning">Good morning.</p>
+            <p class="note" id="current-note">A warm everyday greeting.</p>
+          </div>
+          <div class="deck-actions">
+            <button class="soft-button" id="prev-phrase" type="button">Previous</button>
+            <button class="soft-button" id="next-phrase" type="button">Next</button>
+          </div>
+        </aside>
+
+        <section class="challenge-panel" aria-live="polite">
+          <div class="panel-top">
+            <div>
+              <p class="eyebrow">Round <span id="round-value">1</span></p>
+              <h2 id="challenge-title">Choose the phrase</h2>
+            </div>
+            <button class="mode-button" id="change-mode" type="button">Meaning Match</button>
+          </div>
+          <div class="prompt-box"><span id="prompt-label">English</span><strong id="challenge-prompt">Good morning.</strong></div>
+          <div class="answers-grid" id="answer-grid"></div>
+          <div class="feedback-row">
+            <p id="feedback-text">Pick the matching Traditional Mandarin phrase.</p>
+            <button class="primary-button" id="next-round" type="button" hidden>Next</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="library-panel" aria-label="Phrase library">
+        <div class="library-head">
+          <h2>Charm Basket</h2>
+          <div class="filter-tabs" role="tablist" aria-label="Phrase category">
+            <button class="tab is-active" type="button" data-category="all">All</button>
+            <button class="tab" type="button" data-category="home">Home</button>
+            <button class="tab" type="button" data-category="food">Food</button>
+            <button class="tab" type="button" data-category="plans">Plans</button>
+          </div>
+        </div>
+        <div class="phrase-list" id="phrase-list"></div>
+      </section>
+    </main>
+    <script src="chinese-garden.js"></script>
+  </body>
+</html>
