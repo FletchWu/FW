@@ -1,5 +1,5 @@
-# Kuromi Mandarin Garden
+# Kuromi Mandarin Quest
 
-A cozy purple Traditional Mandarin learning game.
+Static site files for the purple Traditional Mandarin learning game.
 
 Open `index.html` or host this repository with GitHub Pages.
