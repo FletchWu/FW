@@ -27,6 +27,7 @@
           </div>
           <div class="quick-actions" aria-label="Custom practice tools">
             <button class="primary-button" id="open-custom-form" type="button">+ Add</button>
+            <button class="soft-button" id="open-line-sync" type="button">LINE</button>
             <button class="soft-button" id="export-custom" type="button">Export</button>
             <label class="soft-button import-button" for="import-custom-file">Import</label>
             <input id="import-custom-file" type="file" accept="application/json" />
@@ -169,6 +170,35 @@
           <div class="form-actions">
             <button class="primary-button" id="save-practice-now" type="submit">Save & Practice</button>
             <button class="soft-button" id="save-another" type="button">Save Another</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div class="sheet-backdrop" id="line-sync-sheet" hidden>
+      <section class="bottom-sheet" aria-labelledby="line-sync-title" role="dialog" aria-modal="true">
+        <div class="sheet-head">
+          <div>
+            <p class="eyebrow">LINE Sync</p>
+            <h2 id="line-sync-title">Saved LINE Terms</h2>
+          </div>
+          <button class="icon-button" id="close-line-sync" type="button" aria-label="Close">X</button>
+        </div>
+
+        <form class="custom-form" id="line-sync-form">
+          <label>
+            API URL
+            <input id="line-api-url" type="url" autocomplete="off" placeholder="https://your-worker.example.workers.dev" />
+          </label>
+          <label>
+            Sync Token
+            <input id="line-sync-token" type="password" autocomplete="off" placeholder="Private sync token" />
+          </label>
+          <p class="sync-status" id="line-sync-status">Not connected yet.</p>
+
+          <div class="form-actions">
+            <button class="primary-button" id="line-sync-now" type="button">Sync Now</button>
+            <button class="soft-button" id="save-line-sync" type="submit">Save Settings</button>
           </div>
         </form>
       </section>
