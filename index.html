@@ -13,10 +13,24 @@
           <p class="eyebrow">Traditional Mandarin</p>
           <h1>Kuromi &#23567;&#39764;&#38364;</h1>
         </div>
-        <div class="status-grid">
-          <div class="status-pill"><span>XP</span><strong id="xp-value">0</strong></div>
-          <div class="status-pill"><span>Streak</span><strong id="streak-value">0</strong></div>
-          <div class="status-pill hearts" id="heart-value" aria-label="Hearts">000</div>
+        <div class="header-tools">
+          <div class="status-grid">
+            <div class="status-pill">
+              <span>XP</span>
+              <strong id="xp-value">0</strong>
+            </div>
+            <div class="status-pill">
+              <span>Streak</span>
+              <strong id="streak-value">0</strong>
+            </div>
+            <div class="status-pill hearts" id="heart-value" aria-label="Hearts">000</div>
+          </div>
+          <div class="quick-actions" aria-label="Custom practice tools">
+            <button class="primary-button" id="open-custom-form" type="button">+ Add</button>
+            <button class="soft-button" id="export-custom" type="button">Export</button>
+            <label class="soft-button import-button" for="import-custom-file">Import</label>
+            <input id="import-custom-file" type="file" accept="application/json" />
+          </div>
         </div>
       </header>
 
@@ -25,22 +39,45 @@
           <p class="eyebrow">Daily Phrase Quest</p>
           <h2 id="unit-title">Morning Magic</h2>
           <p id="unit-description">Practice warm everyday greetings and quick check-ins.</p>
-          <div class="progress-track" aria-label="Lesson progress"><div class="progress-fill" id="progress-fill"></div></div>
+          <div class="progress-track" aria-label="Lesson progress">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
         </div>
 
         <div class="mascot-stage" aria-hidden="true">
           <svg viewBox="0 0 520 320" role="img" aria-label="Purple game world">
             <defs>
-              <linearGradient id="stageSky" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#2b1a4a" /><stop offset="60%" stop-color="#8054bf" /><stop offset="100%" stop-color="#ffd6f5" /></linearGradient>
-              <radialGradient id="moon" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff7b2" /><stop offset="100%" stop-color="#ff9fda" /></radialGradient>
+              <linearGradient id="stageSky" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#2b1a4a" />
+                <stop offset="60%" stop-color="#8054bf" />
+                <stop offset="100%" stop-color="#ffd6f5" />
+              </linearGradient>
+              <radialGradient id="moon" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fff7b2" />
+                <stop offset="100%" stop-color="#ff9fda" />
+              </radialGradient>
             </defs>
             <rect width="520" height="320" rx="24" fill="url(#stageSky)" />
             <circle cx="424" cy="62" r="35" fill="url(#moon)" />
             <path d="M421 32 C398 52 405 88 433 99 C393 98 377 56 401 30 C409 22 418 22 421 32 Z" fill="#2b1a4a" opacity="0.55" />
-            <g fill="#ffd7f5"><path d="M76 54 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2 Z" /><path d="M166 96 l5 10 11 2 -8 7 2 11 -10 -5 -10 5 2 -11 -8 -7 11 -2 Z" /><path d="M365 110 l6 12 13 2 -10 9 3 13 -12 -7 -12 7 3 -13 -10 -9 13 -2 Z" /></g>
+            <g fill="#ffd7f5">
+              <path d="M76 54 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2 Z" />
+              <path d="M166 96 l5 10 11 2 -8 7 2 11 -10 -5 -10 5 2 -11 -8 -7 11 -2 Z" />
+              <path d="M365 110 l6 12 13 2 -10 9 3 13 -12 -7 -12 7 3 -13 -10 -9 13 -2 Z" />
+            </g>
             <path d="M0 236 C72 185 151 193 219 239 C303 171 398 188 520 230 L520 320 L0 320 Z" fill="#b985ee" />
             <path d="M0 268 C112 213 221 229 297 272 C382 220 454 226 520 255 L520 320 L0 320 Z" fill="#4a2770" />
-            <g class="mascot"><path d="M214 132 C188 78 181 50 200 35 C221 52 234 88 240 124 Z" fill="#20142d" /><path d="M300 124 C307 88 322 52 344 35 C362 50 353 80 324 134 Z" fill="#20142d" /><path d="M224 128 C238 105 303 105 318 130 C350 180 328 238 271 238 C214 238 194 180 224 128 Z" fill="#241834" /><ellipse cx="271" cy="169" rx="47" ry="40" fill="#fff2fb" /><circle cx="251" cy="166" r="7" fill="#21152e" /><circle cx="291" cy="166" r="7" fill="#21152e" /><path d="M263 185 C268 190 274 190 279 185" fill="none" stroke="#21152e" stroke-width="4" stroke-linecap="round" /><path d="M250 122 l13 10 16 -10 16 10 13 -10 -6 29 h-46 Z" fill="#f38ccf" /><circle cx="279" cy="134" r="9" fill="#fff2fb" /></g>
+            <g class="mascot">
+              <path d="M214 132 C188 78 181 50 200 35 C221 52 234 88 240 124 Z" fill="#20142d" />
+              <path d="M300 124 C307 88 322 52 344 35 C362 50 353 80 324 134 Z" fill="#20142d" />
+              <path d="M224 128 C238 105 303 105 318 130 C350 180 328 238 271 238 C214 238 194 180 224 128 Z" fill="#241834" />
+              <ellipse cx="271" cy="169" rx="47" ry="40" fill="#fff2fb" />
+              <circle cx="251" cy="166" r="7" fill="#21152e" />
+              <circle cx="291" cy="166" r="7" fill="#21152e" />
+              <path d="M263 185 C268 190 274 190 279 185" fill="none" stroke="#21152e" stroke-width="4" stroke-linecap="round" />
+              <path d="M250 122 l13 10 16 -10 16 10 13 -10 -6 29 h-46 Z" fill="#f38ccf" />
+              <circle cx="279" cy="134" r="9" fill="#fff2fb" />
+            </g>
             <g id="reward-charms"></g>
           </svg>
         </div>
@@ -48,22 +85,94 @@
 
       <section class="game-layout">
         <aside class="lesson-map" aria-label="Lesson map">
-          <div class="panel-head"><h2>Quest Map</h2><button class="icon-button" id="reset-progress" type="button" aria-label="Reset progress">R</button></div>
+          <div class="panel-head">
+            <h2>Quest Map</h2>
+            <button class="icon-button" id="reset-progress" type="button" aria-label="Reset progress">R</button>
+          </div>
           <div class="unit-list" id="unit-list"></div>
         </aside>
 
         <section class="challenge-card" aria-live="polite">
-          <div class="challenge-top"><div><p class="eyebrow" id="challenge-type">Meaning Match</p><h2 id="challenge-prompt">Good morning.</h2></div><button class="sound-button" id="play-audio" type="button">Listen</button></div>
+          <div class="lesson-hud" aria-label="Lesson status">
+            <button class="close-lesson-button" id="close-lesson" type="button" aria-label="Back to map">X</button>
+            <div class="lesson-progress-track">
+              <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+            </div>
+            <div class="lesson-hearts" id="lesson-heart-value" aria-label="Lesson hearts">000</div>
+          </div>
+
+          <div class="challenge-top">
+            <div>
+              <p class="eyebrow" id="challenge-type">Meaning Match</p>
+              <h2 id="challenge-prompt">Good morning.</h2>
+            </div>
+            <button class="sound-button" id="play-audio" type="button">Listen</button>
+          </div>
+
           <div class="answer-grid" id="answer-grid"></div>
-          <div class="feedback-row"><p id="feedback-text">Choose the best answer to charge the next charm.</p><button class="primary-button" id="continue-button" type="button" hidden>Continue</button></div>
+
+          <div class="feedback-row">
+            <p id="feedback-text">Choose the best answer to charge the next charm.</p>
+            <button class="primary-button" id="continue-button" type="button" hidden>Continue</button>
+          </div>
         </section>
       </section>
 
       <section class="phrase-bank" aria-label="Unlocked phrases">
-        <div class="panel-head"><h2>Phrase Bank</h2><span id="mastery-label">0 mastered</span></div>
+        <div class="panel-head">
+          <h2>Phrase Bank</h2>
+          <span id="mastery-label">0 mastered</span>
+        </div>
         <div class="phrase-grid" id="phrase-grid"></div>
       </section>
     </main>
+
+    <div class="sheet-backdrop" id="custom-sheet" hidden>
+      <section class="bottom-sheet" aria-labelledby="custom-sheet-title" role="dialog" aria-modal="true">
+        <div class="sheet-head">
+          <div>
+            <p class="eyebrow">Custom Practice</p>
+            <h2 id="custom-sheet-title">Add Daily-Life Term</h2>
+          </div>
+          <button class="icon-button" id="close-custom-form" type="button" aria-label="Close">X</button>
+        </div>
+
+        <form class="custom-form" id="custom-form">
+          <input id="custom-id" type="hidden" />
+          <label>
+            Traditional Chinese
+            <input id="custom-hanzi" type="text" autocomplete="off" required placeholder="&#20363;&#22914; &#25563;&#38651;&#27744;" />
+          </label>
+          <label>
+            English Meaning
+            <input id="custom-meaning" type="text" autocomplete="off" required placeholder="Example: change the battery" />
+          </label>
+          <label>
+            Pinyin
+            <input id="custom-pinyin" type="text" autocomplete="off" placeholder="Optional, e.g. huan dian chi" />
+          </label>
+          <label>
+            Category
+            <select id="custom-category">
+              <option value="daily">Daily Life</option>
+              <option value="food">Food</option>
+              <option value="home">Home</option>
+              <option value="travel">Travel</option>
+              <option value="relationship">Relationship</option>
+            </select>
+          </label>
+          <label>
+            Note / Situation
+            <textarea id="custom-note" rows="3" placeholder="Optional: where you noticed this word"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button class="primary-button" id="save-practice-now" type="submit">Save & Practice</button>
+            <button class="soft-button" id="save-another" type="button">Save Another</button>
+          </div>
+        </form>
+      </section>
+    </div>
 
     <script src="chinese-garden.js"></script>
   </body>
