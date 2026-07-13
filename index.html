@@ -2,200 +2,181 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#2b173d" />
     <title>Kuromi Mandarin Quest</title>
     <link rel="stylesheet" href="chinese-garden.css" />
   </head>
   <body>
-    <main class="app-shell">
-      <header class="top-bar" aria-label="Player status">
-        <div>
-          <p class="eyebrow">Traditional Mandarin</p>
-          <h1>Kuromi &#23567;&#39764;&#38364;</h1>
+    <div class="app-shell">
+      <header class="app-header" aria-label="Learner status">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <div>
+            <span class="brand-kicker">Traditional Mandarin</span>
+            <strong>Kuromi Quest</strong>
+          </div>
         </div>
-        <div class="header-tools">
-          <div class="status-grid">
-            <div class="status-pill">
-              <span>XP</span>
-              <strong id="xp-value">0</strong>
-            </div>
-            <div class="status-pill">
-              <span>Streak</span>
-              <strong id="streak-value">0</strong>
-            </div>
-            <div class="status-pill hearts" id="heart-value" aria-label="Hearts">000</div>
-          </div>
-          <div class="quick-actions" aria-label="Custom practice tools">
-            <button class="primary-button" id="open-custom-form" type="button">+ Add</button>
-            <button class="soft-button" id="open-line-sync" type="button">LINE</button>
-            <button class="soft-button" id="export-custom" type="button">Export</button>
-            <label class="soft-button import-button" for="import-custom-file">Import</label>
-            <input id="import-custom-file" type="file" accept="application/json" />
-          </div>
+        <div class="status-strip">
+          <span class="status-item xp"><small>XP</small><strong id="xp-value">0</strong></span>
+          <span class="status-item streak"><small>STREAK</small><strong id="streak-value">0</strong></span>
+          <span class="status-item hearts" id="heart-value" aria-label="Hearts">3</span>
         </div>
       </header>
 
-      <section class="hero-stage" aria-label="Game progress">
-        <div class="hero-copy">
-          <p class="eyebrow">Daily Phrase Quest</p>
-          <h2 id="unit-title">Morning Magic</h2>
-          <p id="unit-description">Practice warm everyday greetings and quick check-ins.</p>
-          <div class="progress-track" aria-label="Lesson progress">
-            <div class="progress-fill" id="progress-fill"></div>
-          </div>
-        </div>
-
-        <div class="mascot-stage" aria-hidden="true">
-          <svg viewBox="0 0 520 320" role="img" aria-label="Purple game world">
-            <defs>
-              <linearGradient id="stageSky" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stop-color="#2b1a4a" />
-                <stop offset="60%" stop-color="#8054bf" />
-                <stop offset="100%" stop-color="#ffd6f5" />
-              </linearGradient>
-              <radialGradient id="moon" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#fff7b2" />
-                <stop offset="100%" stop-color="#ff9fda" />
-              </radialGradient>
-            </defs>
-            <rect width="520" height="320" rx="24" fill="url(#stageSky)" />
-            <circle cx="424" cy="62" r="35" fill="url(#moon)" />
-            <path d="M421 32 C398 52 405 88 433 99 C393 98 377 56 401 30 C409 22 418 22 421 32 Z" fill="#2b1a4a" opacity="0.55" />
-            <g fill="#ffd7f5">
-              <path d="M76 54 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2 Z" />
-              <path d="M166 96 l5 10 11 2 -8 7 2 11 -10 -5 -10 5 2 -11 -8 -7 11 -2 Z" />
-              <path d="M365 110 l6 12 13 2 -10 9 3 13 -12 -7 -12 7 3 -13 -10 -9 13 -2 Z" />
-            </g>
-            <path d="M0 236 C72 185 151 193 219 239 C303 171 398 188 520 230 L520 320 L0 320 Z" fill="#b985ee" />
-            <path d="M0 268 C112 213 221 229 297 272 C382 220 454 226 520 255 L520 320 L0 320 Z" fill="#4a2770" />
-            <g class="mascot">
-              <path d="M214 132 C188 78 181 50 200 35 C221 52 234 88 240 124 Z" fill="#20142d" />
-              <path d="M300 124 C307 88 322 52 344 35 C362 50 353 80 324 134 Z" fill="#20142d" />
-              <path d="M224 128 C238 105 303 105 318 130 C350 180 328 238 271 238 C214 238 194 180 224 128 Z" fill="#241834" />
-              <ellipse cx="271" cy="169" rx="47" ry="40" fill="#fff2fb" />
-              <circle cx="251" cy="166" r="7" fill="#21152e" />
-              <circle cx="291" cy="166" r="7" fill="#21152e" />
-              <path d="M263 185 C268 190 274 190 279 185" fill="none" stroke="#21152e" stroke-width="4" stroke-linecap="round" />
-              <path d="M250 122 l13 10 16 -10 16 10 13 -10 -6 29 h-46 Z" fill="#f38ccf" />
-              <circle cx="279" cy="134" r="9" fill="#fff2fb" />
-            </g>
-            <g id="reward-charms"></g>
-          </svg>
-        </div>
-      </section>
-
-      <section class="game-layout">
-        <aside class="lesson-map" aria-label="Lesson map">
-          <div class="panel-head">
-            <h2>Quest Map</h2>
-            <button class="icon-button" id="reset-progress" type="button" aria-label="Reset progress">R</button>
-          </div>
-          <div class="unit-list" id="unit-list"></div>
-        </aside>
-
-        <section class="challenge-card" aria-live="polite">
-          <div class="lesson-hud" aria-label="Lesson status">
-            <button class="close-lesson-button" id="close-lesson" type="button" aria-label="Back to map">X</button>
-            <div class="lesson-progress-track">
-              <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
-            </div>
-            <div class="lesson-hearts" id="lesson-heart-value" aria-label="Lesson hearts">000</div>
-          </div>
-
-          <div class="challenge-top">
+      <main class="app-main">
+        <section class="app-view is-active" id="view-home" data-view="home" aria-labelledby="home-title">
+          <div class="welcome-row">
             <div>
-              <p class="eyebrow" id="challenge-type">Meaning Match</p>
-              <h2 id="challenge-prompt">Good morning.</h2>
+              <p class="section-kicker">Today</p>
+              <h1 id="home-title">Ready for one small win?</h1>
+              <p>Practice a few useful phrases and keep your streak glowing.</p>
             </div>
-            <button class="sound-button" id="play-audio" type="button">Listen</button>
+            <div class="mini-mascot" aria-hidden="true">
+              <span class="ear left"></span><span class="ear right"></span><span class="face">K</span>
+            </div>
           </div>
 
-          <div class="answer-grid" id="answer-grid"></div>
+          <section class="daily-goal" aria-labelledby="daily-goal-title">
+            <div class="goal-topline">
+              <div>
+                <p class="section-kicker">Daily goal</p>
+                <h2 id="daily-goal-title">Complete one lesson</h2>
+              </div>
+              <strong id="daily-goal-count">0 / 1</strong>
+            </div>
+            <div class="progress-track" aria-label="Daily goal progress">
+              <span class="progress-fill" id="daily-goal-progress"></span>
+            </div>
+            <button class="button button-primary button-wide" id="continue-learning" type="button">
+              <span>Continue Learning</span><span aria-hidden="true">›</span>
+            </button>
+          </section>
 
-          <div class="feedback-row">
-            <p id="feedback-text">Choose the best answer to charge the next charm.</p>
-            <button class="primary-button" id="continue-button" type="button" hidden>Continue</button>
-          </div>
+          <section class="path-section" aria-labelledby="path-title">
+            <div class="section-heading">
+              <div><p class="section-kicker">Your path</p><h2 id="path-title">Daily Mandarin</h2></div>
+              <button class="text-button" type="button" data-go-view="learn">View all</button>
+            </div>
+            <div class="lesson-path" id="home-path"></div>
+          </section>
+
+          <section class="quest-card" aria-labelledby="quest-title">
+            <span class="quest-icon" aria-hidden="true">Q</span>
+            <div><p class="section-kicker">Daily quest</p><h2 id="quest-title">Earn 30 XP</h2><p id="quest-copy">A short session is enough.</p></div>
+            <strong id="quest-progress">0 / 30</strong>
+          </section>
         </section>
-      </section>
 
-      <section class="phrase-bank" aria-label="Unlocked phrases">
-        <div class="panel-head">
-          <h2>Phrase Bank</h2>
-          <span id="mastery-label">0 mastered</span>
-        </div>
-        <div class="phrase-grid" id="phrase-grid"></div>
-      </section>
-    </main>
+        <section class="app-view" id="view-learn" data-view="learn" aria-labelledby="learn-title" hidden>
+          <div class="page-heading"><p class="section-kicker">Course</p><h1 id="learn-title">Learning Path</h1><p>Move through practical Mandarin, one focused lesson at a time.</p></div>
+          <div class="unit-banner"><span>Section 1</span><strong>Everyday connection</strong><small>Traditional Chinese · Taiwan Mandarin</small></div>
+          <div class="lesson-path expanded" id="learn-path"></div>
+        </section>
+
+        <section class="app-view" id="view-practice" data-view="practice" aria-labelledby="practice-title" hidden>
+          <div class="page-heading"><p class="section-kicker">Strengthen</p><h1 id="practice-title">Practice</h1><p>Review what matters and turn new words into memory.</p></div>
+          <button class="practice-hero" id="start-custom-practice" type="button">
+            <span class="practice-symbol" aria-hidden="true">↻</span>
+            <span><small>My Practice</small><strong>Review custom and LINE phrases</strong><em id="practice-count">0 saved phrases</em></span>
+            <span aria-hidden="true">›</span>
+          </button>
+          <div class="practice-grid">
+            <button class="practice-tile" type="button" data-review="mistakes"><span>!</span><strong>Quick Review</strong><small>Refresh recent phrases</small></button>
+            <button class="practice-tile" type="button" data-review="listening"><span>♪</span><strong>Listening</strong><small>Train your ear</small></button>
+          </div>
+          <section class="recent-section"><div class="section-heading"><div><p class="section-kicker">Recently added</p><h2>Fresh phrases</h2></div></div><div class="mini-phrase-list" id="practice-list"></div></section>
+        </section>
+
+        <section class="app-view phrasebook-view" id="view-phrasebook" data-view="phrasebook" aria-labelledby="phrasebook-title" hidden>
+          <div class="page-heading compact"><p class="section-kicker">Your collection</p><h1 id="phrasebook-title">Phrasebook</h1></div>
+          <label class="search-field"><span aria-hidden="true">⌕</span><input id="phrase-search" type="search" placeholder="Search Chinese, pinyin, or meaning" autocomplete="off" /></label>
+          <div class="filter-row" id="phrase-filters" aria-label="Phrase categories">
+            <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="greetings">Greetings</button>
+            <button class="filter-chip" type="button" data-filter="food">Food</button>
+            <button class="filter-chip" type="button" data-filter="feelings">Feelings</button>
+            <button class="filter-chip" type="button" data-filter="plans">Plans</button>
+            <button class="filter-chip" type="button" data-filter="custom">Custom</button>
+          </div>
+          <div class="phrase-grid" id="phrase-grid"></div>
+          <button class="fab" id="phrasebook-add" type="button" aria-label="Add a phrase">+</button>
+        </section>
+
+        <section class="app-view" id="view-profile" data-view="profile" aria-labelledby="profile-title" hidden>
+          <div class="page-heading"><p class="section-kicker">Your space</p><h1 id="profile-title">Profile & Settings</h1></div>
+          <section class="profile-card"><span class="profile-avatar" aria-hidden="true">K</span><div><strong>Mandarin Learner</strong><small id="profile-summary">0 XP · 0 phrases mastered</small></div></section>
+          <section class="settings-group" aria-labelledby="sync-settings-title">
+            <h2 id="sync-settings-title">Connections</h2>
+            <button class="settings-row" id="open-line-sync" type="button"><span class="settings-icon">L</span><span><strong>LINE Sync</strong><small id="line-settings-copy">Connected automatically</small></span><span aria-hidden="true">›</span></button>
+          </section>
+          <section class="settings-group" aria-labelledby="data-settings-title">
+            <h2 id="data-settings-title">Data & backup</h2>
+            <button class="settings-row" id="export-custom" type="button"><span class="settings-icon">↓</span><span><strong>Export phrases</strong><small>Download a JSON backup</small></span><span aria-hidden="true">›</span></button>
+            <label class="settings-row" for="import-custom-file"><span class="settings-icon">↑</span><span><strong>Import phrases</strong><small>Restore from a JSON backup</small></span><span aria-hidden="true">›</span></label>
+            <input id="import-custom-file" type="file" accept="application/json" hidden />
+          </section>
+          <section class="settings-group" aria-labelledby="app-settings-title">
+            <h2 id="app-settings-title">App</h2>
+            <button class="settings-row danger" id="reset-progress" type="button"><span class="settings-icon">R</span><span><strong>Reset learning progress</strong><small>Custom phrases will be kept</small></span><span aria-hidden="true">›</span></button>
+          </section>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Primary navigation">
+        <button class="nav-item is-active" type="button" data-nav="home"><span aria-hidden="true">⌂</span><strong>Home</strong></button>
+        <button class="nav-item" type="button" data-nav="learn"><span aria-hidden="true">◎</span><strong>Learn</strong></button>
+        <button class="nav-item" type="button" data-nav="practice"><span aria-hidden="true">↻</span><strong>Practice</strong></button>
+        <button class="nav-item" type="button" data-nav="phrasebook"><span aria-hidden="true">文</span><strong>Phrasebook</strong></button>
+        <button class="nav-item" type="button" data-nav="profile"><span aria-hidden="true">●</span><strong>Profile</strong></button>
+      </nav>
+    </div>
+
+    <section class="lesson-screen" id="lesson-screen" hidden aria-live="polite">
+      <header class="lesson-header">
+        <button class="icon-button ghost" id="close-lesson" type="button" aria-label="Exit lesson">×</button>
+        <div class="lesson-progress-track" aria-label="Lesson progress"><span class="lesson-progress-fill" id="lesson-progress-fill"></span></div>
+        <span class="lesson-hearts" id="lesson-heart-value" aria-label="Lesson hearts">3</span>
+      </header>
+      <main class="lesson-main">
+        <p class="lesson-label" id="challenge-type">Meaning Match</p>
+        <h1 id="challenge-prompt">Good morning.</h1>
+        <button class="audio-prompt" id="play-audio" type="button" hidden><span aria-hidden="true">♪</span><span>Listen again</span></button>
+        <div class="answer-grid" id="answer-grid"></div>
+      </main>
+      <footer class="lesson-action-bar" id="lesson-action-bar">
+        <div class="feedback-copy" id="feedback-panel" hidden><strong id="feedback-title"></strong><p id="feedback-text"></p></div>
+        <button class="button button-primary button-wide" id="continue-button" type="button" disabled>Check</button>
+      </footer>
+    </section>
 
     <div class="sheet-backdrop" id="custom-sheet" hidden>
       <section class="bottom-sheet" aria-labelledby="custom-sheet-title" role="dialog" aria-modal="true">
-        <div class="sheet-head">
-          <div>
-            <p class="eyebrow">Custom Practice</p>
-            <h2 id="custom-sheet-title">Add Daily-Life Term</h2>
-          </div>
-          <button class="icon-button" id="close-custom-form" type="button" aria-label="Close">X</button>
-        </div>
-
+        <div class="sheet-handle" aria-hidden="true"></div>
+        <div class="sheet-head"><div><p class="section-kicker">Custom Practice</p><h2 id="custom-sheet-title">Add Daily-Life Phrase</h2></div><button class="icon-button ghost" id="close-custom-form" type="button" aria-label="Close">×</button></div>
         <form class="custom-form" id="custom-form">
           <input id="custom-id" type="hidden" />
-          <label>
-            Traditional Chinese
-            <input id="custom-hanzi" type="text" autocomplete="off" required placeholder="&#20363;&#22914; &#25563;&#38651;&#27744;" />
-          </label>
-          <label>
-            English Meaning
-            <input id="custom-meaning" type="text" autocomplete="off" required placeholder="Example: change the battery" />
-          </label>
-          <label>
-            Pinyin
-            <input id="custom-pinyin" type="text" autocomplete="off" placeholder="Optional, e.g. huan dian chi" />
-          </label>
-          <label>
-            Category
-            <select id="custom-category">
-              <option value="daily">Daily Life</option>
-              <option value="food">Food</option>
-              <option value="home">Home</option>
-              <option value="travel">Travel</option>
-              <option value="relationship">Relationship</option>
-            </select>
-          </label>
-          <label>
-            Note / Situation
-            <textarea id="custom-note" rows="3" placeholder="Optional: where you noticed this word"></textarea>
-          </label>
-
-          <div class="form-actions">
-            <button class="primary-button" id="save-practice-now" type="submit">Save & Practice</button>
-            <button class="soft-button" id="save-another" type="button">Save Another</button>
-          </div>
+          <label>Traditional Chinese<input id="custom-hanzi" type="text" autocomplete="off" required placeholder="例如：換電池" /></label>
+          <label>English or Thai meaning<input id="custom-meaning" type="text" autocomplete="off" required placeholder="Example: change the battery" /></label>
+          <label>Hanyu Pinyin<input id="custom-pinyin" type="text" autocomplete="off" placeholder="Optional: huàn diàn chí" /></label>
+          <label>Category<select id="custom-category"><option value="daily">Daily Life</option><option value="greetings">Greetings</option><option value="food">Food</option><option value="feelings">Feelings</option><option value="plans">Plans</option><option value="home">Home</option><option value="travel">Travel</option><option value="relationship">Relationship</option></select></label>
+          <label>Note / situation<textarea id="custom-note" rows="3" placeholder="Optional context"></textarea></label>
+          <div class="form-actions"><button class="button button-primary" id="save-practice-now" type="submit">Save & Practice</button><button class="button button-secondary" id="save-another" type="button">Save Another</button></div>
         </form>
       </section>
     </div>
 
     <div class="sheet-backdrop" id="line-sync-sheet" hidden>
-      <section class="bottom-sheet" aria-labelledby="line-sync-title" role="dialog" aria-modal="true">
-        <div class="sheet-head">
-          <div>
-            <p class="eyebrow">LINE Sync</p>
-            <h2 id="line-sync-title">Saved LINE Terms</h2>
-          </div>
-          <button class="icon-button" id="close-line-sync" type="button" aria-label="Close">X</button>
-        </div>
-
-        <form class="custom-form" id="line-sync-form">
-          <p class="sync-status" id="line-sync-status">LINE sync is ready.</p>
-
-          <div class="form-actions">
-            <button class="primary-button" id="line-sync-now" type="button">Sync Now</button>
-          </div>
-        </form>
+      <section class="bottom-sheet compact-sheet" aria-labelledby="line-sync-title" role="dialog" aria-modal="true">
+        <div class="sheet-handle" aria-hidden="true"></div>
+        <div class="sheet-head"><div><p class="section-kicker">Connection</p><h2 id="line-sync-title">LINE Sync</h2></div><button class="icon-button ghost" id="close-line-sync" type="button" aria-label="Close">×</button></div>
+        <div class="sync-panel"><span class="sync-dot" aria-hidden="true"></span><div><strong>Automatic sync is on</strong><p id="line-sync-status">Checking for new phrases…</p></div></div>
+        <button class="button button-primary button-wide" id="line-sync-now" type="button">Sync Now</button>
       </section>
     </div>
 
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
     <script src="chinese-garden.js"></script>
-    <script src="line-sync.js"></script>
   </body>
 </html>
+
